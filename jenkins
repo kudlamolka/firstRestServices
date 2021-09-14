@@ -1,0 +1,22 @@
+pipeline{
+    agent any
+    stages{
+        stage("compilePhase"){
+            steps{
+                bat "mvn compile"
+            }
+        }
+        stage("testPhase"){
+            steps{
+                bat "cd C:\Users\ADMIN\.jenkins\workspace\compilePhase\"
+                bat "mvn test"
+            }
+        }
+        stage("testPhase"){
+            steps{
+                bat "cd C:\Users\ADMIN\.jenkins\workspace\compilePhase\"
+                bat "mvn clean package"
+            }
+        }
+    }
+}
